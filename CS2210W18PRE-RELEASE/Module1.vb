@@ -4,18 +4,17 @@
         Dim _min_age As Integer = 4
         Dim _max_age As Integer = 14
 
-        Dim contestants_name(20) As String
-        Dim contestants_age(20) As Integer
-        Dim contestants_checkdigit(20) As String
-        Dim contestants_run(20) As Integer
-        Dim contestants_personalbesttime(20) As Double
+        Dim contestants_name(19) As String
+        Dim contestants_age(19) As Integer
+        Dim contestants_checkdigit(19) As String
+        Dim contestants_run(19) As Integer
+        Dim contestants_personalbesttime(19) As Double
 
-        Dim index As Integer = 1
-        For Each child As String In contestants_name 'Accept 20 contestants registration
-            Console.WriteLine("Please enter the name for Contestant " & index)
+        For index = 0 To 29 'Accept 20 contestants registration
+            Console.WriteLine("Please enter the name for Contestant " & index + 1)
             contestants_name(index) = Console.ReadLine 'Read user input
 Age:
-            Console.WriteLine("Enter the age of Contestant " & index)
+            Console.WriteLine("Enter the age for Contestant " & contestants_name(index))
             Dim age = Convert.ToInt32(Console.ReadLine) 'read and convert user input to integer
             If age < _min_age Or age > _max_age Then 'check if age is within accepted range
                 Console.WriteLine("Age is out of range, should be between 4 to 15 years old!")
@@ -30,14 +29,13 @@ Age:
 
             'calculate checkdigit
             Dim digit3, digit2, digit1, checkdigit As Integer
-            Dim remainder As String
-
+            Dim remainder As Integer
             digit3 = index / 2
             digit2 = age / 2
             digit1 = index Mod age
 
-            remainder = ((digit3 * 4) & (digit2 * 3) & (digit1 * 2)) Mod 11
-            checkdigit = 11 - remainder
+            remainder = ((digit3 * 4) + (digit2 * 3) + (digit1 * 2)) Mod 10
+            checkdigit = 10 - remainder
 
             contestants_checkdigit(index) = digit3 & digit2 & digit1 & checkdigit
 
@@ -45,7 +43,7 @@ Age:
             Console.WriteLine("Contestant " & index & " was registered with UID: " & contestants_checkdigit(index))
 
             index = index + 1
-        Next child
+        Next index
     End Sub
 
 End Module
