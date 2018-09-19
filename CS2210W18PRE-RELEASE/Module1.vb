@@ -10,7 +10,7 @@
         Dim contestants_run(19) As Integer
         Dim contestants_personalbesttime(19) As Double
 
-        For index = 0 To 29 'Accept 20 contestants registration
+        For index = 0 To 19 'Accept 20 contestants registration
             Console.WriteLine("Please enter the name for Contestant " & index + 1)
             contestants_name(index) = Console.ReadLine 'Read user input
 Age:
